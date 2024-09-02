@@ -155,8 +155,8 @@ const WeatherApp = () => {
              
               <form onSubmit={handleSearch}>
                 <p>
-                <input
-                className="searchbox"
+                <input 
+                className="searchbox border-2 border-blue-600"
                   type="text"
                   placeholder="Enter city"
                   value={query}
@@ -214,14 +214,14 @@ const WeatherApp = () => {
             </div> 
               </div>
             )}
-            <div className="pagination">
-              <button
+            <div className="pagination space-x-4 py-4">
+              <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 onClick={() => setCurrentPage(currentPage - 1)}
                 disabled={currentPage === 1}
               >
                 Previous
               </button>
-              <button
+              <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 pr-4"
                 onClick={() => setCurrentPage(currentPage + 1)}
                 disabled={
                   currentPage * itemsPerPage >=

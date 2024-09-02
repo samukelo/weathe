@@ -22,7 +22,7 @@ function Navbar() {
             <div className="flex lg:flex-1">
               <Link to="../" className="linkcolor">
                 <h1 className="Logo">
-                  7 Day <span>Weather</span>
+                  7 Day <span className="text-blue-400">Weather</span>
                 </h1>
               </Link>
             </div>

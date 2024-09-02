@@ -1,14 +1,80 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
+import { useNavigate, Link } from "react-router-dom";
+import buda from "./assets/budapest.jpg";
+import cape from "./assets/capetown.jpg";
+import giyani from "./assets/giyani.png";
+import joburg from "./assets/joburg.jpg";
+import london from "./assets/london.jpg";
+import regina from "./assets/regina.jpg";
+import rio from "./assets/rio.jpg";
+import sydney from "./assets/sydney.jpg";
+import CityCardWithWeather from "./CityCardWithWeather";
 const WeatherApp = () => {
+  const [selectedCity, setSelectedCity] = useState(null);
+  const [selectedLat, setSelectedLat] = useState(null);
+  const [selectedLong, setSelectedLong] = useState(null);
+
+  const handleCityClick = (lat, long, city) => {
+    setSelectedLat(lat);
+    setSelectedLong(long);
+    setSelectedCity(city);
+  };
+
+  const cities = [
+    {
+      city: "Budapest",
+      latitude: 47.4979,
+      longitude: 19.0402,
+      image: "src/assets/budapest.jpg",
+    },
+    {
+      city: "London",
+      latitude: 51.5074,
+      longitude: -0.1278,
+      image: "src/assets/london.jpg",
+    },
+    {
+      city: "Cape Town",
+      latitude: 33.9221,
+      longitude: 18.4231,
+      image: "src/assets/capetown.jpg",
+    },
+    {
+      city: "Giyani",
+      latitude: -23.3127,
+      longitude: 30.7034,
+      image: "src/assets/giyani.png",
+    }, 
+    {
+      city: "Johannesburg",
+      latitude: -26.2056,
+      longitude: 28.0337,
+      image: "src/assets/joburg.jpg",
+    },{
+      city: "Rio de Janeiro",
+      latitude: -22.908333,
+      longitude: -43.196388,
+      image: "src/assets/rio.jpg",
+    },{
+      city: "Regina",
+      latitude: 50.4452,
+      longitude: -104.6189,
+      image: "src/assets/regina.jpg",
+    },{
+      city: "Sydney",
+      latitude: -33.865143,
+      longitude: 151.209900,
+      image: "src/assets/sydney.jpg",
+    },
+  ];
+
   const [dailyData, setDailyData] = useState([]);
   const [query, setQuery] = useState("");
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(3);
+  const [itemsPerPage] = useState(4);
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -84,20 +150,20 @@ const WeatherApp = () => {
 
   return (
     <div>
-      <section className="homesection">
-        <div className="flex">
-          <div className="grow h-14"></div>
-          <div className="grow-0 h-14">
-            {" "}
-            <div className="homeform">
-              <h1>Weather Forecast</h1>
+  
+  <div className="homeform">
+             
               <form onSubmit={handleSearch}>
+                <p>
                 <input
+                className="searchbox"
                   type="text"
                   placeholder="Enter city"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                 />
+                </p>
+                
                 <button
                   type="submit"
                   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
@@ -106,15 +172,20 @@ const WeatherApp = () => {
                 </button>
               </form>
             </div>
+        
             {error && <p style={{ color: "red" }}>{error}</p>}
             {dailyData.time && (
               <div>
-                <h2>Daily Forecast</h2>
-                <ul>
+                <div className="grid gap-4 grid-cols-4">
+              
                   {getPaginatedData().map((date, index) => (
-                    <li key={index}>
-                      <h3>{date}</h3>
-                      <p>
+              
+                   <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
+                    <a href="#" key={index}>
+                        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{date}</h5>
+                    </a>
+                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                    <p>
                         Max Temperature: {dailyData.temperature_2m_max[index]}°C
                       </p>
                       <p>
@@ -123,12 +194,24 @@ const WeatherApp = () => {
                       <p>
                         Precipitation: {dailyData.precipitation_sum[index]} mm
                       </p>
-                      <button onClick={() => handleDetailClick(index)}>
+                      
+                    </p>
+                    <a  className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <button onClick={() => handleDetailClick(index)}>
                         View Details
                       </button>
-                    </li>
+                        <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                        </svg>
+                    </a>
+                </div> 
+
+
+
+                  
+                    
                   ))}
-                </ul>
+            </div> 
               </div>
             )}
             <div className="pagination">
@@ -148,10 +231,31 @@ const WeatherApp = () => {
                 Next
               </button>
             </div>
-          </div>
-          <div className="grow h-14"></div>
-        </div>
-      </section>
+          
+      <div className="grid gap-4 grid-cols-4">
+        {cities.map((cityInfo) => (
+          <CityCardWithWeather
+            key={cityInfo.city}
+            city={cityInfo.city}
+            latitude={cityInfo.latitude}
+            longitude={cityInfo.longitude}
+            image={cityInfo.image}
+          />
+        ))}
+        {/* <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
+    <a href="#">
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
+    </a>
+    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+    <a href="#" className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        Read more
+        <svg className="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+        </svg>
+    </a>
+</div> */}
+      </div>
+      
     </div>
   );
 };

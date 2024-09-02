@@ -166,7 +166,7 @@ const WeatherApp = () => {
                 
                 <button
                   type="submit"
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full py-4"
                 >
                   Search
                 </button>
@@ -176,11 +176,11 @@ const WeatherApp = () => {
             {error && <p style={{ color: "red" }}>{error}</p>}
             {dailyData.time && (
               <div>
-                <div className="grid gap-4 grid-cols-4">
+                <div className="grid gap-4 grid-cols-4 py-6">
               
                   {getPaginatedData().map((date, index) => (
               
-                   <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ">
+                   <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 py-4">
                     <a href="#" key={index}>
                         <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{date}</h5>
                     </a>

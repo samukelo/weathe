@@ -9,7 +9,7 @@ function App() {
   return (
     <Router>
       <Navbar />
-      <h1 className="text-center">Weather Forecast</h1>
+      <h1 className="text-center text-3xl">Weather Forecast</h1>
       <Routes>
         <Route path="/" element={<WeatherApp />} />
         <Route path="/detailed" element={<DetailedPage />} />

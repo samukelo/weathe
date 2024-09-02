@@ -26,11 +26,7 @@ function Navbar() {
                 </h1>
               </Link>
             </div>
-            <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-              <Link to="../" className="linkcolor">
-                <span className="subbtn"> Subscribe </span>
-              </Link>
-            </div>
+            
           </nav>
         </header>
       </div>

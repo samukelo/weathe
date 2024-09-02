@@ -23,15 +23,47 @@ const DetailedPage = () => {
   const weatherCondition = getWeatherCondition(state);
 
   return (
-    <div>
-      <h2>Detailed Weather Stats</h2>
-      <p>Date: {state.date}</p>
-      <p>Max Temperature: {state.temperature_2m_max}°C</p>
-      <p>Min Temperature: {state.temperature_2m_min}°C</p>
-      <p>Precipitation: {state.precipitation_sum} mm</p>
-      <p>Humidity: {state.humidity}</p>
-      <p>Wind Speed: {state.wind_speed} km/h</p>
-      <p>Condition: {weatherCondition}</p>
+    <div className="text-xl text-center py-4">
+      <h2 className="pb-4 text-2xl">Detailed Weather Stats</h2>
+      <div className="flex justify-center space-x-2">
+        <div>
+        <h3 className="text-blue-900 text-2xl">Date: </h3>
+        </div>
+        <div>
+        <p > {state.date}</p>
+        </div>
+      </div>
+      <div className="flex justify-center space-x-2">
+        <div>
+        <h3  className="text-blue-800 text-2xl">Max Temperature:</h3>
+        </div>
+        <div>
+        <p> {state.temperature_2m_max}°C</p>
+        </div>
+      </div>
+     <div className="flex justify-center space-x-2">
+     <h3  className="text-blue-800 text-2xl">Min Temperature: </h3>
+     <p> {state.temperature_2m_min}°C</p>
+     </div>
+      
+      <div className="flex justify-center space-x-2">
+      <h3  className="text-blue-800 text-2xl">Precipitation:</h3>
+      <p> {state.precipitation_sum} mm</p>
+      </div>
+      <div className="flex justify-center space-x-2">
+      <h3  className="text-blue-800 text-2xl">Humidity:</h3>
+      <p>  {state.humidity}</p>
+
+      </div>
+      <div className="flex justify-center space-x-2">
+      <h3  className="text-blue-800 text-2xl">Wind Speed: </h3>
+      <p> {state.wind_speed} km/h</p>
+      </div>
+      <div className="flex justify-center space-x-2">
+      <h3  className="text-blue-800 text-2xl">Condition: </h3>
+      <p> {weatherCondition}</p>
+
+      </div>
     </div>
   );
 };

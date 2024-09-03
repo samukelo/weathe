@@ -155,7 +155,7 @@ const WeatherApp = () => {
       <form onSubmit={handleSearch}>
         <p>
           <input
-            className="searchbox border-2 border-blue-600"
+            className="searchbox border-2 border-blue-600 2xl:size-[70px] "
             type="text"
             placeholder="Enter city"
             value={query}
@@ -176,7 +176,7 @@ const WeatherApp = () => {
 
     {dailyData.time && (
       <div>
-        <div className="grid gap-4 grid-cols-4 py-6">
+        <div className="grid gap-4 grid-cols-1 py-6 sm:grid-cols-2 sm:px-4 lg:grid-cols-3 lg:pl-16 xl:gap-7 xl:items-center ">
           {getPaginatedData().map((date, index) => (
             <div
               key={index}
@@ -225,7 +225,7 @@ const WeatherApp = () => {
 
     {/* Show City Cards only when no search query */}
     {!query && (
-      <div className="grid gap-4 grid-cols-4">
+      <div className="grid gap-4 xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 sm:px-5 2xl:grid-cols-4">
         {cities.map((cityInfo) => (
           <CityCardWithWeather
             key={cityInfo.city}

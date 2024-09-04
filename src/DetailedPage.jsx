@@ -23,8 +23,8 @@ const DetailedPage = () => {
   const weatherCondition = getWeatherCondition(state);
 
   return (
-    <div className="text-xl text-center py-4">
-      <h2 className="pb-4 text-2xl">Detailed Weather Statso</h2>
+    <div className="text-xl text-center py-4 ">
+      <h2 className="pb-4 text-2xl">Detailed Weather Stats</h2>
       <div className="flex justify-center space-x-2">
         <div>
         <h3 className="text-blue-900 text-2xl">Date: </h3>

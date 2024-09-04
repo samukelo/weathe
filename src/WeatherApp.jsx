@@ -165,7 +165,7 @@ const WeatherApp = () => {
 
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full ml-20 mt-5"
         >
           Search
         </button>
@@ -175,7 +175,7 @@ const WeatherApp = () => {
     {error && <p style={{ color: "red" }}>{error}</p>}
 
     {dailyData.time && (
-      <div>
+      <div className="px-20 py-6 grid gap-4">
         <div className="grid gap-4 grid-cols-1 py-6 sm:grid-cols-2 sm:px-4 lg:grid-cols-3 lg:pl-16 xl:gap-7 xl:items-center ">
           {getPaginatedData().map((date, index) => (
             <div
@@ -204,21 +204,31 @@ const WeatherApp = () => {
       </div>
     )}
 
-    <div className="pagination ">
+    <div className="flex justify-between px-36">
+     <div className="px-10">
       <button
         onClick={() => setCurrentPage(currentPage - 1)}
-        disabled={currentPage === 1}
+        disabled={currentPage === 1}className="px-5 py-2 bg-blue-600 text-white rounded"
       >
         Previous
+        
       </button>
+      </div>
+      
+     <div className="px-40">
       <button
         onClick={() => setCurrentPage(currentPage + 1)}
         disabled={
           currentPage * itemsPerPage >= (dailyData.time ? dailyData.time.length : 0)
-        }
+        }className="px-8 bg-blue-600 text-white rounded py-2"
       >
+      
+        
         Next
+       
       </button>
+      </div>
+    
     </div>
     <div className="py-10 text-3xl flex justify-center">
       <h1>Today's Weather</h1>

@@ -220,11 +220,16 @@ const WeatherApp = () => {
         Next
       </button>
     </div>
+    <div className="py-10 text-3xl flex justify-center">
+      <h1>Today's Weather</h1>
+    </div>
 
     {/* Show City Cards only when no search query */}
     {!query && (
       <div className="grid gap-4 xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 sm:px-5 2xl:grid-cols-4">
+        
         {cities.map((cityInfo) => (
+          
           <CityCardWithWeather
             key={cityInfo.city}
             city={cityInfo.city}

@@ -6,7 +6,7 @@ function Footer() {
         <p className="left">
           <div className="flex lg:flex-1">
             <Link to="../" className="linkcolor" id>
-              <h1 className="Logo">
+              <h1 className="Logo text-3xl">
                 7 Day <span className="text-blue-400">Weather</span>
               </h1>
             </Link>

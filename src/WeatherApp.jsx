@@ -204,6 +204,8 @@ const WeatherApp = () => {
       </div>
     )}
 
+    <div className="flex justify-center py-4 ">
+     <div className="px-5">
     <div className="flex justify-between px-36">
      <div className="px-5">
       <button
@@ -215,7 +217,7 @@ const WeatherApp = () => {
       </button>
       </div>
       
-     <div className="px-40">
+     <div className="px-4">
       <button
         onClick={() => setCurrentPage(currentPage + 1)}
         disabled={

@@ -205,7 +205,7 @@ const WeatherApp = () => {
     )}
 
     <div className="flex justify-between px-36">
-     <div className="px-10">
+     <div className="px-5">
       <button
         onClick={() => setCurrentPage(currentPage - 1)}
         disabled={currentPage === 1}className="px-5 py-2 bg-blue-600 text-white rounded"

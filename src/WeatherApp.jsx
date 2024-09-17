@@ -139,10 +139,10 @@ const WeatherApp = () => {
       precipitation_sum: dailyData.precipitation_sum[index],
       humidity: dailyData.humidity_2m_max
         ? dailyData.humidity_2m_max[index]
-        : "N/A", // Handle optional data
+        : "N/A", 
       wind_speed: dailyData.wind_speed_10m_max
         ? dailyData.wind_speed_10m_max[index]
-        : "N/A", // Handle optional data
+        : "N/A",
     };
     navigate("/detailed", { state: dayData });
   };

@@ -3,13 +3,13 @@ import { useLocation } from "react-router-dom";
 
 const getWeatherCondition = (data) => {
   if (data.precipitation_sum > 10) {
-    return "Rainy"; // Adjust threshold as needed
+    return "Rainy";
   } else if (data.wind_speed > 20) {
-    return "Windy"; // Adjust threshold as needed
+    return "Windy"; 
   } else if (data.temperature_2m_max > 25) {
-    return "Sunny"; // Adjust threshold as needed
+    return "Sunny"; 
   }
-  return "Clear"; // Default condition
+  return "Clear";
 };
 
 const DetailedPage = () => {
